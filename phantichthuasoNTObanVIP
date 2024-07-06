@@ -1,0 +1,49 @@
+
+import java.util.Scanner;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Admin
+ */
+public class phanTichSNT {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        for(int j=1;j<=t;j++){
+            StringBuilder s= new StringBuilder();
+            s.append("Test ");
+            s.append(j);
+            s.append(": ");
+            
+         long n=sc.nextLong();
+
+            for(int i=2;i<Math.sqrt(n);i++){
+                int cnt=0;
+                if(n%i==0){
+                    while(n%i==0){
+                        n/=i;
+                        cnt++;
+                    }
+                    if(cnt>0){
+                        s.append(i);
+                        s.append("(");
+                        s.append(cnt);
+                        s.append(") ");
+                    }
+                }
+            }
+            if(n>1){
+                s.append(n);
+                s.append("(");
+                s.append(1);
+                s.append(")");
+            }else s.deleteCharAt(s.length()-1);
+            System.out.println(s);
+        }
+    }
+}
