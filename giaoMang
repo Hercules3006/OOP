@@ -1,0 +1,41 @@
+
+import java.util.Scanner;
+import java.util.TreeSet;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Admin
+ */
+public class giaoMang {
+    static boolean check(int[] b, int a,int m){
+        for(int i=0;i<m;i++)
+            if(a==b[i]) return true;
+        return false;
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        int[] a=new int[n];
+        int[] b=new int[m];
+        TreeSet<Integer> s= new TreeSet<>();
+        for(int i=0;i<n;i++){
+            a[i]=sc.nextInt();
+        }
+        for(int i=0;i<m;i++){
+            b[i]=sc.nextInt();
+        }
+        for(int i=0;i<n;i++){
+            if(check(b,a[i],m)) s.add(a[i]);
+        }
+        s.forEach((k->{
+            System.out.printf("%d ",k);
+        }));
+        
+    }
+}
