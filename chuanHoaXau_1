@@ -1,0 +1,33 @@
+
+import java.util.Scanner;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Admin
+ */
+public class chuanHoaXau_1 {
+    static String solve(String s){
+        String s1=s.substring(0,1).toUpperCase();
+        String s2=s.substring(1,s.length());
+        return s1+s2;
+    }
+    public static void main(String[] args) {
+        Scanner sc =new Scanner(System.in);
+        int t=sc.nextInt();
+        sc.nextLine();
+        while(t-->0){
+            String s=sc.nextLine().trim().toLowerCase();
+            String tmp[]=s.split("\\s+");
+            String ans ="";
+            for(String i: tmp){
+                ans+=solve(i)+" ";
+            }            
+            System.out.println(ans);
+        }
+    }
+}
