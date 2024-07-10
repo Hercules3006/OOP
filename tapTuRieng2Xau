@@ -1,0 +1,36 @@
+
+import java.util.*;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+public class Main {
+
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = Integer.valueOf(sc.nextLine());
+        while(t-->0) {
+
+            TreeSet<String> a = new TreeSet<>();
+            TreeSet<String> b = new TreeSet<>();
+            String temp[] = sc.nextLine().trim().split("\\s++");
+            for(String i : temp){
+                a.add(i);
+            }
+            String temp1[] = sc.nextLine().trim().split("\\s++");
+            for(String i : temp1){
+                b.add(i);
+            }
+            for(String i : a){
+                if(b.contains(i)){
+                    continue;
+                }else{
+                    System.out.print(i+ " ");
+                }
+            }
+            System.out.println();
+        }
+
+    }
+}
