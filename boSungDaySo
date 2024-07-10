@@ -1,0 +1,43 @@
+import java.math.BigInteger;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+//        int t = Integer.parseInt(sc.nextLine());
+//        while (t-->0){
+//            String a = sc.nextLine();
+//            String b = sc.nextLine();
+//
+//        }
+        int t=sc.nextInt();
+        String b="";
+        for(int i=0;i<t;i++){
+            b=b+sc.next()+" ";
+        }
+        TreeSet<Integer> s1= new TreeSet<>();
+        TreeSet<Integer> s2= new TreeSet<>();
+
+        String tmp2[]=b.trim().split("\\s+");
+        for(int i=1;i<=Integer.parseInt(tmp2[tmp2.length - 1]);i++){
+            s1.add(i);
+        }
+        for(int i = 0; i < tmp2.length; i++){
+            s2.add(Integer.parseInt(tmp2[i]));
+        }
+
+//        for(Integer i : s2){
+//            System.out.print(i + " ");
+//        }
+
+        int c=0;
+        for(Integer i: s1){
+            if(!s2.contains(i)){
+                System.out.printf("%s\n",i);
+                c=1;
+            }
+        }
+        if(c==0) System.out.println("Excellent!");
+    }
+}
