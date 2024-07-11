@@ -1,0 +1,36 @@
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Admin
+ */
+public class soTamPhan {
+    static String check(String s){
+        Set<Character> ss = new HashSet<>();
+        ss.add('0');
+        ss.add('1');
+        ss.add('2');
+        for(int i=0;i<s.length();i++){
+            if(!ss.contains(s.charAt(i)))
+                return "NO";
+           
+        }
+        return "YES";
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0){
+            String s=sc.next();
+            System.out.println(check(s));
+        }
+    }
+}
