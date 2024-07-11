@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Admin
+ */
+public class tinhLuyThua {
+    static long c=1000000007;
+    static long MOD(long a, long b){
+        if(b==0) return 1;
+        if(b%2==1) return MOD(a,b-1)*a%c;
+        long p=MOD(a,b/2);
+         return p*p%c;
+    }
+    public static void main(String[] args) {
+        
+       Scanner sc= new Scanner(System.in);
+       
+       while(true){
+           long a=sc.nextLong();
+           long b=sc.nextLong();
+           if(a==0&&b==0) break;
+           System.out.println(MOD(a,b));
+       }
+    }
+}
