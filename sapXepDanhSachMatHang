@@ -1,0 +1,87 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package javacore;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Admin
+ */
+ class MH implements Comparable<MH>{
+    private int id;
+    private static int cnt=1;
+    private String name, loai;
+    private Float mua, ban, lai;
+
+    public MH(String name, String loai, float mua, float ban) {
+        this.id=cnt++;
+        this.name = name;
+        this.loai = loai;
+        this.mua = mua;
+        this.ban = ban;
+        this.lai=ban-mua;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLoai() {
+        return loai;
+    }
+
+    public void setLoai(String loai) {
+        this.loai = loai;
+    }
+
+    public float getMua() {
+        return mua;
+    }
+
+    public void setMua(float mua) {
+        this.mua = mua;
+    }
+
+    public float getBan() {
+        return ban;
+    }
+
+    public void setBan(float ban) {
+        this.ban = ban;
+    }
+
+    @Override
+    public String toString() {
+        return id+" "+name+" "+loai+" "+String.format("%.2f", lai);
+    }
+
+    @Override
+    public int compareTo(MH o) {
+        return -(this.lai.compareTo(o.lai));
+    }
+    
+}
+public class sapXepDanhSachMatHang {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int t=sc.nextInt();
+        sc.nextLine();
+        ArrayList<MH> a= new ArrayList<>();
+        while(t-->0){
+            a.add(new MH(sc.nextLine(),sc.nextLine(),Float.parseFloat(sc.nextLine()),Float.parseFloat(sc.nextLine())));
+        }
+        Collections.sort(a);
+        for(MH i: a){
+            System.out.println(i);
+        }
+    }
+}
