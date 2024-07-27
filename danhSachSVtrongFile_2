@@ -1,0 +1,57 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package javacore;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Admin
+ */
+class SV {
+    private String name,lop;
+    private Date Dob;
+    private String id;
+    private float gpa;
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private static int cnt=1;
+    public SV(String name, String lop, String Dob, Float gpa) throws ParseException {
+        this.id=String.format("B20DCCN%03d", cnt++);
+        this.name = name;
+        this.lop=lop;
+        this.Dob=sdf.parse(Dob);
+        this.gpa=gpa;
+    }
+
+    @Override
+    public String toString() {
+        return id+" "+name+" "+lop+" "+sdf.format(Dob)+" "+String.format("%.2f", gpa);
+    }
+
+}
+public class danhSachSVtrongFile_2 {
+    public static void main(String[] args) throws  ParseException, FileNotFoundException {
+        Scanner sc=new Scanner(new File("SV.in"));
+        int t=sc.nextInt();
+        sc.nextLine();
+        List<SV> l=new ArrayList<>();
+        while(t-->0){
+            l.add(new SV(sc.nextLine(),sc.nextLine(),sc.nextLine(),Float.valueOf(sc.nextLine())));
+        }
+        
+        for(SV i:l){
+                System.out.println(i);
+        }
+    }
+}
+
