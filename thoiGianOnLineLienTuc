@@ -1,0 +1,62 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package javacore;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Admin
+ */
+class timee implements Comparable<timee>{
+    private String name;
+    private Date vao, ra;
+    private long thuc;
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+    public timee(String name, String vao, String ra) throws ParseException {
+        this.name = name;
+        this.vao = sdf.parse(vao);
+        this.ra = sdf.parse(ra);
+        cal();
+    }
+    private void cal(){
+        this.thuc=this.ra.getTime()-this.vao.getTime();
+    }
+
+    @Override
+    public int compareTo(timee o) {
+        return Long.compare(o.thuc, this.thuc);
+    }
+
+    @Override
+    public String toString() {
+        return name+" "+this.thuc/1000/60;
+    }
+
+}
+public class thoiGianOnlineLienTuc {
+    public static void main(String[] args) throws  ParseException, FileNotFoundException {
+        Scanner sc=new Scanner(new File("ONLINE.in"));
+        int t=sc.nextInt();
+        sc.nextLine();
+        List<timee> l=new ArrayList<>();
+        while(t-->0){
+            l.add(new timee(sc.nextLine(),sc.nextLine(),sc.nextLine()));
+        }
+        Collections.sort(l);
+        for(timee i:l){
+                System.out.println(i);
+        }
+    }
+}
