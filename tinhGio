@@ -1,0 +1,72 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package javacore;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Admin
+ */
+class time implements Comparable<time>{
+    private String id,name,vao,ra;
+    private long thuc;
+    private long gio, phut;
+    private static final SimpleDateFormat sdf =new SimpleDateFormat("hh:mm");
+
+    public time(String id, String name, String vao, String ra) throws ParseException {
+        this.id = id;
+        this.name = name;
+        this.vao = vao;
+        this.ra = ra;
+        cal();
+        solve();
+    }
+
+    private void cal() throws ParseException {
+        Date a= sdf.parse(this.vao);
+        Date b=sdf.parse(ra);
+        this.thuc=b.getTime()-a.getTime();
+    }
+
+    private void solve() { 
+        long tmp=this.thuc;
+        this.gio= tmp/(1000*60*60);
+        this.phut=tmp/(1000*60)%60;
+    }
+
+    @Override
+    public int compareTo(time o) {
+        return Long.compare(o.thuc, this.thuc);
+    }
+
+    @Override
+    public String toString() {
+        return id+" "+name+" "+gio+" gio "+phut+" phut ";
+    }
+    
+}
+public class tinhGio {
+    public static void main(String[] args) throws ParseException {
+        
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        sc.nextLine();
+        List<time> l= new ArrayList<>();
+        while(t-->0){
+            l.add(new time(sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine()));
+        }
+        Collections.sort(l);
+        for(time i:l){
+            System.out.println(i);
+        }
+    }
+}
