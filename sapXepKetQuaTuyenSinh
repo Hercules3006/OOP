@@ -1,0 +1,75 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package javacore;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Admin
+ */
+class Sinh implements Comparable<Sinh>{
+    private String id, name, status;
+    private double toan, ly, hoa, uu, tong,thuc;
+    static String solve(double x){
+        if((int)x==x) return String.format("%d", (int)x);
+        else return String.format("%.1f", x);
+    }
+    public Sinh(String id, String name, double toan, double ly, double hoa) {
+        this.id = id;
+        this.name = name;
+        this.toan = toan;
+        this.ly = ly;
+        this.hoa = hoa;
+        this.thuc=toan*2+ly+hoa;
+        uuTien();
+        this.tong=this.thuc+this.uu;
+        check();
+    }
+    
+    private void uuTien(){
+        if(this.id.startsWith("KV1")) this.uu= 0.5;
+        if(this.id.startsWith("KV2")) this.uu= 1.0;
+        if(this.id.startsWith("KV3")) this.uu= 2.5;
+        
+    }
+    private void check(){
+        if(this.tong>=24.0) this.status="TRUNG TUYEN";
+        if(this.tong>=0&& this.tong<24) this.status="TRUOT";
+    }
+    @Override
+    public int compareTo(Sinh o) {
+        
+        int c=Double.compare(o.tong, this.tong);
+       if(c==0){
+           return this.id.compareTo(o.id);
+       }
+       else return c;
+    }
+
+    @Override
+    public String toString() {
+        return id+" "+name+" "+solve(this.uu)+" "+solve(this.tong)+" "+this.status;
+    }
+    
+}
+public class sapXepKetQuaTuyenSinh {
+    public static void main(String[] args) {
+        Scanner sc =new Scanner(System.in);
+        int t= Integer.parseInt(sc.nextLine());
+        List<Sinh> l= new ArrayList<>();
+        while(t-->0){
+            l.add(new Sinh(sc.nextLine(),sc.nextLine(),Double.parseDouble(sc.nextLine()),
+            Double.parseDouble(sc.nextLine()),Double.parseDouble(sc.nextLine())));
+        }
+        Collections.sort(l);
+        for(Sinh i:l){
+            System.out.println(i);
+        }
+    }
+}
